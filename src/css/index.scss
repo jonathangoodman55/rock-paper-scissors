@@ -2,13 +2,15 @@ body {
   font-family: sans-serif;
 }
 
-#play ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-#play li {
-  margin-bottom: 16px;
+#play {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    
+    li {
+      margin-bottom: 16px;
+    }
+  }
 }
 
 button {
@@ -17,10 +19,10 @@ button {
   border: 1px solid #efefef;
   padding: 16px 20px;
   font-size: 20px;
-}
 
-button:hover {
-  background: #dbdbdb;
+  &:hover {
+    background: #dbdbdb;
+  }
 }
 
 p#winner {
