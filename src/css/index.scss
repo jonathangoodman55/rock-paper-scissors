@@ -1,9 +1,30 @@
-@import './style.css';
-
 body {
-	background-color: green;
+  font-family: sans-serif;
+}
 
-	h1 {
-		color: white;
-	}
+#play {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    
+    li {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+button {
+  appearance: none;
+  background: #efefef;
+  border: 1px solid #efefef;
+  padding: 16px 20px;
+  font-size: 20px;
+
+  &:hover {
+    background: #dbdbdb;
+  }
+}
+
+p#winner {
+  font-size: 20px;
 }
