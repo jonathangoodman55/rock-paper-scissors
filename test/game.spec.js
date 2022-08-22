@@ -53,6 +53,19 @@ describe('Game', () => {
           'Player 2 won 🎉'
         ]).toContain(game.result());
       })
-    })
+    });
+
+    describe('When no user actions provided (computer vs computer)', () => {
+      it('Should produce a valid result', () => {
+        const game = new Game(actionSpec);
+        game.play();
+        
+        expect([
+          'It was a draw 🤷🏼‍♂️',
+          'Player 1 won 🎉',
+          'Player 2 won 🎉'
+        ]).toContain(game.result());
+      })
+    });
   });
 });

@@ -31,7 +31,11 @@ export class Game {
   }
 
   play(player1Selection, player2Selection) {
-    this.player1Selection = player1Selection;
+    if (player1Selection) {
+      this.player1Selection = player1Selection;
+    } else {
+      this.player1Selection = this.randomSelection();
+    }
     
     if (player2Selection) {
       this.player2Selection = player2Selection;
