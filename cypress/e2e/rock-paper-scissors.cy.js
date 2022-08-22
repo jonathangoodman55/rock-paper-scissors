@@ -42,6 +42,10 @@ describe('Play computer vs computer game', () => {
       .click();
 
     cy
+      .get('#play')
+      .should('not.exist');
+
+    cy
       .get('#result')
       .get('p#winner')
       .invoke('text')

@@ -6,8 +6,15 @@ import { actionMap  } from "./actions";
 import '../css/index.scss';
 
 const appMain = document.getElementById("app");
+const playSection = document.getElementById("play");
 
 const actions = Object.keys(actionMap);
+
+const removePlaySection = () => {
+  if (playSection) {
+    playSection.remove();
+  }
+};
 
 const displayResults = (game) => {
   const results = document.createElement("section");
@@ -42,6 +49,7 @@ const handlePlayerVsComputerActionClick = (action) => {
   game.setPlayer1Name("You");
   game.setPlayer2Name("Computer");
   game.play(action);
+  removePlaySection();
   displayResults(game);
 };
 
@@ -50,6 +58,7 @@ const handleComputerVsComputerClick = () => {
   game.setPlayer1Name("Computer 1");
   game.setPlayer2Name("Computer 2");
   game.play();
+  removePlaySection();
   displayResults(game);
 };
 
