@@ -1,5 +1,5 @@
-describe('First Glance', () => {
-  it('Displays a page with traditional game actions', () => {
+describe('When user loads the page', () => {
+  it('Displays the traditional game actions', () => {
     cy.visit('http://localhost:8080');
     cy.get('h1').should(
       'contain',
@@ -21,7 +21,10 @@ describe('First Glance', () => {
       .get('button')
       .contains('Scissors')
       .should('exist');
+  });
 
+  it('Displays the option to play computer vs computer', () => {
+    cy.visit('http://localhost:8080');
     cy.get('section#play').get('h2').should('contain', "Other actions");
     cy
       .get('ul#player-actions')
@@ -31,8 +34,8 @@ describe('First Glance', () => {
   })
 });
 
-describe('Play computer vs computer game', () => {
-  it('Should pick 2 random actions and display the results to the user', () => {
+describe('When user chooses to play computer vs computer', () => {
+  it('Should display the result and player summarys to the user', () => {
     cy.visit('http://localhost:8080');
 
     cy
@@ -65,9 +68,9 @@ describe('Play computer vs computer game', () => {
   });
 });
 
-describe('Play user vs computer game', () => {
-  describe('when user selects Rock', () => {
-    it('Should use Rock as the users action and show the results against a random computer action', () => {
+describe('When user chooses to play aginst the computer', () => {
+  describe('When user selects Rock', () => {
+    it('Should display the result and player summarys to the user', () => {
       cy.visit('http://localhost:8080');
 
       cy
@@ -96,3 +99,4 @@ describe('Play user vs computer game', () => {
     });
   })
 });
+
