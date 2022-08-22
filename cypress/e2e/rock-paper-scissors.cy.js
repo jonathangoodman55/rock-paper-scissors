@@ -11,6 +11,16 @@ describe('First Glance', () => {
       .get('button')
       .contains('Rock')
       .should('exist');
+    cy
+      .get('ul#player-actions')
+      .get('button')
+      .contains('Paper')
+      .should('exist');
+    cy
+      .get('ul#player-actions')
+      .get('button')
+      .contains('Scissors')
+      .should('exist');
      
   })
-})
+});
