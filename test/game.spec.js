@@ -85,13 +85,20 @@ describe('Game', () => {
       });
     })
 
-    // describe('When no name set for players', () => {
-    //   it('Should call player 1 "Player 1', () => {
-    //     const game = new Game(actionSpec);
-    //     game.play();
-    //     expect(game.result()).contain("Player 1");
-    //     expect(game.player1Summary()).contain("Player 1");
-    //   });
-    // })
+    describe('When no name set for players', () => {
+      it('Should call player 1 "Player 1', () => {
+        const game = new Game(actionSpec);
+        game.play('rock', 'scissors');
+        expect(game.result()).toContain('Player 1');
+        expect(game.player1Summary()).toContain("Player 1");
+      });
+
+      it('Should call player 2 "Player 2', () => {
+        const game = new Game(actionSpec);
+        game.play('scissors', 'rock');
+        expect(game.result()).toContain("Player 2");
+        expect(game.player2Summary()).toContain("Player 2");
+      });
+    });
   });
 });
