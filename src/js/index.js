@@ -37,6 +37,14 @@ const displayResults = (game) => {
   }
 };
 
+const handlePlayerVsComputerActionClick = (action) => {
+  const game = new Game(actionMap);
+  game.setPlayer1Name("You");
+  game.setPlayer2Name("Computer");
+  game.play(action);
+  displayResults(game);
+};
+
 const handleComputerVsComputerClick = () => {
   const game = new Game(actionMap);
   game.setPlayer1Name("Computer 1");
@@ -51,7 +59,7 @@ const playerActionItems = actions.map((key) => {
   buttonElement.id = key;
   buttonElement.title = actionMap[key].helpText;
   buttonElement.innerHTML = actionMap[key].display;
-  buttonElement.addEventListener("click", () => console.log('do something'))
+  buttonElement.addEventListener("click", () => handlePlayerVsComputerActionClick(key))
   li.append(buttonElement);
   return li;
 });

@@ -65,7 +65,7 @@ describe('Play user vs computer game', () => {
   describe('when user selects Rock', () => {
     it('Should use Rock as the users action and show the results against a random computer action', () => {
       cy.visit('http://localhost:8080');
-      
+
       cy
         .get('ul#player-actions')
         .get('button')
@@ -82,7 +82,7 @@ describe('Play user vs computer game', () => {
         .get('#result')
         .get('p#player-1-summary')
         .invoke('text')
-        .should('match', /You played 👊🏽/)
+        .should('match', /You played Rock 👊🏽/)
 
       cy
         .get('#result')
