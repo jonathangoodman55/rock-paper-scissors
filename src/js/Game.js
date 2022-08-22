@@ -21,9 +21,24 @@ export class Game {
     return 0;
   }
 
+  randomSelection() {
+    const properties = Object.keys(this.spec);
+    const numberOfProperties = properties.length;
+    const randomIndex = Math.floor(
+      Math.random() * (numberOfProperties - 1 - 0 + 1) + 0
+    );
+    return properties[randomIndex];
+  }
+
   play(player1Selection, player2Selection) {
     this.player1Selection = player1Selection;
-    this.player2Selection = player2Selection
+    
+    if (player2Selection) {
+      this.player2Selection = player2Selection;
+    } else {
+      this.player2Selection = this.randomSelection();
+    }
+
     this.side = this.determineWinner();
   }
 

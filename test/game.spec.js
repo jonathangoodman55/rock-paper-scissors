@@ -41,5 +41,18 @@ describe('Game', () => {
         expect(game.result()).toBe('It was a draw 🤷🏼‍♂️');
       });
     });
+
+    describe('When only 1 action provided (user vs computer)', () => {
+      it('Should produce a valid result', () => {
+        const game = new Game(actionSpec);
+        game.play('rock');
+        
+        expect([
+          'It was a draw 🤷🏼‍♂️',
+          'Player 1 won 🎉',
+          'Player 2 won 🎉'
+        ]).toContain(game.result());
+      })
+    })
   });
 });
