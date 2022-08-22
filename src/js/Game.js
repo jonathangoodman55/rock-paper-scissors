@@ -46,6 +46,26 @@ export class Game {
     this.side = this.determineWinner();
   }
 
+  player1Summary() {
+    if (!this.player1Selection || !this.player2Selection) {
+      throw new Error("Player selection required first");
+    }
+
+    return `${this.player1Name} played ${
+      this.spec[this.player1Selection].display
+    }`;
+  }
+
+  player2Summary() {
+    if (!this.player1Selection || !this.player2Selection) {
+      throw new Error("Player selection required first");
+    }
+
+    return `${this.player2Name} played ${
+      this.spec[this.player2Selection].display
+    }`;
+  }
+
   result() {
     if (this.side === 1) {
       return `${this.player1Name} won 🎉`;

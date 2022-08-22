@@ -5,13 +5,16 @@ describe('Game', () => {
   describe('With tradional actions', () => {
     const actionSpec = {
       rock: {
-        beats: "scissors"
+        beats: "scissors",
+        display: "Rock 👊🏽",
       },
       paper: {
-        beats: "rock"
+        beats: "rock",
+        display: "Paper ✋🏼",
       },
       scissors: {
-        beats: "paper"
+        beats: "paper",
+        display: "Scissors ✌🏾",
       }
     };
 
@@ -67,5 +70,28 @@ describe('Game', () => {
         ]).toContain(game.result());
       })
     });
+
+    describe('When game has been played', () => {
+      it('Should give a summary of what player 1 played', () => {
+        const game = new Game(actionSpec);
+        game.play('rock', 'scissors');
+        expect(game.player1Summary()).toBe('Player 1 played Rock 👊🏽');
+      });
+
+      it('Should give a summary of what player 2 played', () => {
+        const game = new Game(actionSpec);
+        game.play('rock', 'scissors');
+        expect(game.player2Summary()).toBe('Player 2 played Scissors ✌🏾');
+      });
+    })
+
+    // describe('When no name set for players', () => {
+    //   it('Should call player 1 "Player 1', () => {
+    //     const game = new Game(actionSpec);
+    //     game.play();
+    //     expect(game.result()).contain("Player 1");
+    //     expect(game.player1Summary()).contain("Player 1");
+    //   });
+    // })
   });
 });
