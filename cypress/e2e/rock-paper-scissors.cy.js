@@ -33,6 +33,8 @@ describe('First Glance', () => {
 
 describe('Play computer vs computer game', () => {
   it('Should pick 2 random actions and display the results to the user', () => {
+    cy.visit('http://localhost:8080');
+
     cy
       .get('ul#player-actions')
       .get('button')
@@ -57,4 +59,36 @@ describe('Play computer vs computer game', () => {
       .invoke('text')
       .should('match', /Computer 2 played/)
   });
+});
+
+describe('Play user vs computer game', () => {
+  describe('when user selects Rock', () => {
+    it('Should use Rock as the users action and show the results against a random computer action', () => {
+      cy.visit('http://localhost:8080');
+      
+      cy
+        .get('ul#player-actions')
+        .get('button')
+        .contains('Rock')
+        .click();
+
+      cy
+        .get('#result')
+        .get('p#winner')
+        .invoke('text')
+        .should('match', /You won 🎉|Computer won 🎉|It was a draw 🤷🏼‍♂️/)
+
+      cy
+        .get('#result')
+        .get('p#player-1-summary')
+        .invoke('text')
+        .should('match', /You played 👊🏽/)
+
+      cy
+        .get('#result')
+        .get('p#player-2-summary')
+        .invoke('text')
+        .should('match', /Computer played/)
+    });
+  })
 });
