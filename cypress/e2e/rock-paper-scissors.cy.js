@@ -21,6 +21,12 @@ describe('First Glance', () => {
       .get('button')
       .contains('Scissors')
       .should('exist');
-     
+
+    cy.get('section#play').get('h2').should('contain', "Other actions");
+    cy
+      .get('ul#player-actions')
+      .get('button')
+      .contains('Computer vs Computer')
+      .should('exist')     
   })
 });

@@ -20,3 +20,7 @@ const playerActionItems = actions.map((key) => {
 
 const playerActionList = document.getElementById("player-actions");
 playerActionList.append(...playerActionItems);
+
+
+const simulateButton = document.getElementById("simulate");
+simulateButton.addEventListener("click", () => console.log('simulate'));
