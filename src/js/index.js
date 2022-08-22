@@ -1,11 +1,49 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-
+import { Game } from '../js/Game';
 import { actionMap  } from "./actions";
 
 import '../css/index.scss';
 
+const appMain = document.getElementById("app");
+
 const actions = Object.keys(actionMap);
+
+const displayResults = (game) => {
+  const results = document.createElement("section");
+  results.id = "result";
+
+  const winnerP = document.createElement("p");
+  winnerP.id = "winner";
+  const player1Summary = document.createElement("p");
+  player1Summary.id = 'player-1-summary';
+  const player2Summary = document.createElement("p");
+  player2Summary.id = 'player-2-summary';
+
+  winnerP.innerHTML = game.result();
+  player1Summary.innerHTML = game.player1Summary();
+  player2Summary.innerHTML = game.player2Summary();
+
+  const buttonElement = document.createElement("button");
+  buttonElement.innerHTML = "🔄&nbsp;Restart";
+  buttonElement.addEventListener("click", () =>
+    window.location.assign(window.location.toString())
+  );
+
+  results.append(winnerP, player1Summary, player2Summary, buttonElement);
+
+  if (appMain) {
+    appMain.append(results);
+  }
+};
+
+const handleComputerVsComputerClick = () => {
+  const game = new Game(actionMap);
+  game.setPlayer1Name("Computer 1");
+  game.setPlayer2Name("Computer 2");
+  game.play();
+  displayResults(game);
+};
 
 const playerActionItems = actions.map((key) => {
   const li = document.createElement("li");
@@ -23,4 +61,4 @@ playerActionList.append(...playerActionItems);
 
 
 const simulateButton = document.getElementById("simulate");
-simulateButton.addEventListener("click", () => console.log('simulate'));
+simulateButton.addEventListener("click", handleComputerVsComputerClick);
