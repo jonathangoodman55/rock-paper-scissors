@@ -100,5 +100,23 @@ describe('Game', () => {
         expect(game.player2Summary()).toContain("Player 2");
       });
     });
+
+    describe('When name is set for players', () => {
+      it('Should call player 1 "You', () => {
+        const game = new Game(actionSpec);
+        game.setPlayer1Name = "You";
+        game.play('rock', 'scissors');
+        expect(game.result()).toContain('You');
+        expect(game.player1Summary()).toContain("You");
+      });
+
+      it('Should call player 2 "Computer 2', () => {
+        const game = new Game(actionSpec);
+        game.setPlayer2Name = "Computer 2";
+        game.play('scissors', 'rock');
+        expect(game.result()).toContain("Computer 2");
+        expect(game.player2Summary()).toContain("Computer 2");
+      });
+    });
   });
 });
